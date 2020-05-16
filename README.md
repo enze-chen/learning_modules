@@ -26,20 +26,22 @@ If you're familiar with GitHub and have Python installed on your computer, this 
 
 
 ## Acknowledgements
-By sharing this repo publicly on GitHub under a [MIT license](LICENSE), I'm pretty much giving you free rein to do whatever you wish with the code. If you found the modules helpful, do spread the word to your friends/classmates, and a shout-out would be appreciated. If you need a more formal citation, something like the following could work:
-    ```
-    Enze Chen, Learning modules, (2020), GitHub, https://github.com/enze-chen/learning_modules.
-    ```
-or in BibTeX:
-    ```
-    @misc{Chen2020,
-        author = {Chen, Enze},
-        title = {Learning modules},
-        year = {2020},
-        publisher = {GitHub},
-        howpublished = {\url{https://github.com/enze-chen/learning_modules}},
-    }
-    ```
+By sharing this repo publicly on GitHub under a [MIT license](LICENSE), I'm pretty much giving you free rein to do whatever you wish with the code. If you found the modules helpful, do spread the word to your friends/classmates, and a shout-out would be appreciated. If you need a more formal citation, something like the following could work:   
+
+```
+Enze Chen, Learning modules, (2020), GitHub, https://github.com/enze-chen/learning_modules.
+```
+or in BibTeX:   
+
+```
+@misc{Chen2020,
+    author = {Chen, Enze},
+    title = {Learning modules},
+    year = {2020},
+    publisher = {GitHub},
+    howpublished = {\url{https://github.com/enze-chen/learning_modules}},
+}
+```
 
 ## Contributing
 If you have any questions about any of these modules or have an idea for a new module, please let me know!
