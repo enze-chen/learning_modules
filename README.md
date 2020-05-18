@@ -1,5 +1,5 @@
 # Learning modules
-This GitHub repository contains a collection of computational learning modules that I have created, largely with Jupyter notebooks. The modules are grouped into files by domain, where   
+This GitHub repository contains a collection of computational learning modules that I have created, largely with [Jupyter notebooks](https://jupyter.org). The modules are grouped into files by domain, where   
 
 - `mse` = materials science and engineering
 
@@ -18,7 +18,7 @@ This method is nice because it doesn't require you to have Git or Python on your
 If you're familiar with Git and have Python installed on your computer, this is another option.   
 
 1. Clone the repository.   
-1. Install the libraries in `requirements.txt` so that you can run all the notebooks. You can do this with:
+1. Install the libraries in [requirements.txt](requirements.txt) so that you can run all the notebooks. You can do this with:
     ```bash
     pip install -r requirements.txt 
     ```   
