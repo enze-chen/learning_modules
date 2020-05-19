@@ -3,6 +3,8 @@ This GitHub repository contains a collection of computational learning modules t
 
 - `mse` = materials science and engineering
 
+The `fig` folder contains all the figures referenced across the modules.
+
 
 ## Usage
 Most of the Jupyter notebooks have an interactive component that requires dynamic rendering. There are several ways to do this, and I give two below:
