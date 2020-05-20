@@ -3,7 +3,7 @@ This GitHub repository contains a collection of computational learning modules t
 
 - `mse` = materials science and engineering
 
-The `fig` folder contains all the figures referenced across the modules.
+The `data` folder contains all the data files referenced across the modules. The `fig` folder contains all the figures referenced across the modules.
 
 
 ## Usage
