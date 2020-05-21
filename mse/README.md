@@ -3,7 +3,9 @@ This folder contains a collection of computational MSE learning modules that I h
 
 * Thermodynamics
 
-    * [Thermo_solution_models](Thermo_solution_models.ipynb): This module teaches you about Gibbs free energy curves, the common tangent construction, and the corresponding phase diagram for ideal and regular solutions. There are widgets and places for you to fill in the code.
+    * [Regular_solution_plot](Regular_solution_plot.ipynb): This module serves as an introduction to scientific computing for *complete beginners*. Your task is to generate the Gibbs free energy curves of the regular solution model.
+
+    * [Thermo_solution_models](Thermo_solution_models.ipynb): This module teaches you about Gibbs free energy curves, the common tangent construction, and the corresponding phase diagrams for ideal and regular solutions. There are widgets and places for you to fill in the code.
     
 * Characterization
 
