@@ -14,15 +14,23 @@ def free_energy_curve(x, T, beta=0):
     H_mix = beta * np.multiply(x, 1 - x)
     G_mix = H_mix - T * S_mix
     return G_mix
-
+```
+```python
 # Generate and plot the curves
 fig, ax = plt.subplots()
 x = np.linspace(0.001, 0.999, 10000)
 T = 1500
+
 for beta in np.linspace(10000, 50000, 6):
-    y = curve(x, T, beta)
-    ax.plot(x, y) 
+    y = free_energy_curve(x, T, beta)
+    ax.plot(x, y)
+
+ax.set_xlabel(r'$x$')
+ax.set_ylabel(r'$\Delta G$')
+
+plt.show()
 ```
+
 
 ### Thermo_solution_models
 ```python
