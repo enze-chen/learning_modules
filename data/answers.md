@@ -53,7 +53,7 @@ for T in T_misc:
 
 ## Characterization
 
-### XRD_trends
+### XRD_indexing
 
 ```python
 wavelength = 0.154
