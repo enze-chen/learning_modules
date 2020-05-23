@@ -20,8 +20,9 @@ def free_energy_curve(x, T, beta=0):
 fig, ax = plt.subplots()
 x = np.linspace(0.001, 0.999, 10000)
 T = 1500
+betas = np.linspace(10000, 50000, 6)
 
-for beta in np.linspace(10000, 50000, 6):
+for beta in betas:
     y = free_energy_curve(x, T, beta)
     ax.plot(x, y)
 
