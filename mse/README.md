@@ -1,5 +1,5 @@
 # MSE learning modules
-This folder contains a collection of computational MSE learning modules that I have created, largely with [Jupyter notebooks](https://jupyter.org). The specific notebooks are:
+This folder contains a collection of computational MSE learning modules that I have created, largely with [Jupyter notebooks](https://jupyter.org). All the notebooks have interactive elements, whether it's adjusting sliders or writing your own code. I've tried to keep the coding parts accessible to beginners. The specific notebooks are:
 
 * Thermodynamics
 

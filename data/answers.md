@@ -45,8 +45,8 @@ for T in Ts:
 
 # Creating the miscibility gap
 for T in T_misc: 
-    y = curve_s(x, T)
-    line, idmin, idmax = common_tangent(x, y, y, T) 
+    y = curve_s(x, T, beta_s)
+    line, idmin, idmax = common_tangent(x, y, y, T, beta_s) 
     solvus.append((x[idmin], T)) 
     solvus.append((x[idmax], T)) 
 ```
