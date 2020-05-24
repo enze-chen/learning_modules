@@ -3,15 +3,17 @@ This folder contains a collection of computational MSE learning modules that I h
 
 * Thermodynamics
 
-    * [Regular_solution_plot](Regular_solution_plot.ipynb): This module serves as an introduction to scientific computing for *complete beginners*. Your task is to generate the Gibbs free energy curves of the regular solution model.
+    * [Intro to regular solutions](Regular_solution_plot.ipynb): This module serves as an introduction to scientific computing for *complete beginners* using [NumPy](https://numpy.org/) and [Matplotlib](https://matplotlib.org/). Your task is to generate the Gibbs free energy curves for the regular solution model.
 
-    * [Thermo_solution_models](Thermo_solution_models.ipynb): This module teaches you about Gibbs free energy curves, the common tangent construction, and the corresponding phase diagrams for ideal and regular solutions. There are widgets and places for you to fill in the code.
+    * [Thermodynamics of solution models](Thermo_solution_models.ipynb): This module teaches you about Gibbs free energy curves, the common tangent construction, and the corresponding phase diagrams for ideal and regular solutions. There are interactive widgets and places for you to fill in the code.
+    
+    * [Eutectic system](Eutectic_solution.ipynb): This module is very similar to the previous module but is customized to plot the Gibbs free energy curves and the eutectic phase diagram. There is an interactive widget that allows you to change the temperature and observe the effects on the Gibbs free energy curve.
     
 * Characterization
 
-    * [XRD_indexing](XRD_indexing.ipynb): This module teaches you how to index powder XRD spectra using scientific computing tools in Python. It is targeted towards *complete beginners* and a good notebook to start with if you're new to Python.
+    * [Indexing powder XRD spectra](XRD_indexing.ipynb): This module teaches you how to index powder XRD spectra using scientific computing tools in Python, specifically [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/). It is targeted towards *complete beginners* and a good notebook to start with if you're new to Python.
     
-    * [XRD_trends](XRD_trends.ipynb): This module teaches you about how changing the experimental parameters will affect the powder XRD spectra. You can adjust some widgets at the end to change the behavior.
+    * [Trends in powder XRD spectra](XRD_trends.ipynb): This module teaches you about how changing the experimental parameters will affect the powder XRD spectra. The widgets at the end correspond to different parameters that will change the peak profile.
 
 
 ## Usage
