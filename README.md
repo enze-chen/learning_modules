@@ -17,7 +17,7 @@ This method is nice because it doesn't require you to have Git or Python on your
 1. Copy and paste the notebook's URL into the blank space and you should be able to run the notebook.
 
 ### 2: Cloning the repo
-If you're familiar with Git and have Python installed on your computer, this is another option.   
+If you're familiar with Git and have **Python 3.6+** installed on your computer, this is another option.   
 
 1. Clone the repository.   
 1. Install the libraries in [requirements.txt](requirements.txt) so that you can run all the notebooks. You can do this with:

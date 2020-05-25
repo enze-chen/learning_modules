@@ -4,6 +4,145 @@
 
 Here I provide some sample code that can be used to complete the learning modules. Note that there are many possible solutions!
 
+
+## Computational
+
+### Monte_Carlo_Ising_model
+```python
+# Set constants
+J = 1
+k_B = 1
+
+# Create the spins
+def create_spins(L):
+    return np.random.choice([-1, 1], size=(L, L))
+
+# Plotting utility
+def plot_spins(spins, T):
+    n = len(spins)
+    fig, ax = plt.subplots()
+    ax.imshow(spins)
+    ax.tick_params(left=False, labelleft=False, bottom=False, labelbottom=False)
+    ax.set_title(f'{n} x {n} lattice, T = {T}')
+    plt.show()
+```
+
+```python
+# Compute the total energy and magnetization
+def compute_energy(spins):
+    a = spins.shape[0]
+    b = spins.shape[1]
+    energy = 0
+    for i in range(a):
+        for j in range(b):
+            energy -= spins[i, j] * spins[(i + 1) % a, j] + \
+                      spins[i, j] * spins[i, (j + 1) % b]
+    return energy / 2
+
+def compute_mag(spins):
+    return np.sum(spins)
+```
+
+```python
+# Perform a single MC sweep
+def mc_sweep(spins, beta):
+    n = len(spins)
+    for _ in range(n):
+        for _ in range(n):
+            # Randomly choose the site
+            i = np.random.randint(0, n)
+            j = np.random.randint(0, n)
+            
+            # Hacky way to quickly compute the energy change
+            nb_sum = spins[(i + 1) % n, j] + spins[(i - 1) % n, j] + \
+                     spins[i, (j + 1) % n] + spins[i, (j - 1) % n]
+            dE = 2 * spins[i, j] * nb_sum
+            
+            # Acceptance criteria for Metroplis-Hastings algorithm
+            # If dE < 0 this is always true and we're done
+            if np.random.random() < np.exp(-dE * beta):
+                spins[i, j] *= -1
+
+    return spins
+```
+
+```python
+# Function to perform the MC simulation
+def mc_ising_model(L, Ts, eqsteps, mcsteps):    
+    # Store the final values as a function of temperature
+    E_T = []
+    M_T = []
+    C_T = []
+    X_T = []
+    
+    for T in Ts:
+        # Initialize everything for each temperature
+        spins = create_spins(L)
+        beta = 1 / T
+        E = E_sq = M = M_sq = 0
+        
+        # Perform equilibration MC runs
+        for _ in range(eqsteps):
+            mc_sweep(spins, beta)
+
+        # Perform additional MC runs
+        for _ in range(mcsteps):
+            mc_sweep(spins, beta)
+            Ex = compute_energy(spins)
+            Mx = compute_mag(spins)
+            E += Ex
+            E_sq += Ex**2
+            M += Mx
+            M_sq += Mx**2
+    
+        # Add quantities to the lists
+        E_T.append(E / L**2 / mcsteps)
+        M_T.append(M / L**2 / mcsteps)
+        C_T.append((E_sq/mcsteps - E**2/mcsteps**2) / L**2 * beta**2)
+        X_T.append((M_sq/mcsteps - M**2/mcsteps**2) / L**2 * beta)
+    
+    # Return the four lists as a tuple
+    return (E_T, M_T, C_T, X_T)
+```
+
+```python
+# Experimental parameters for the MC run
+L = 4
+Ts = np.linspace(1, 5, 9)
+eqsteps = 1800
+mcsteps = 200
+
+# Plotting the results
+# Estimate the critical temperature
+Tc_est = np.mean([Ts[np.argmax(C_T)], Ts[np.argmax(X_T)]])
+print(f'Tc estimate: {Tc_est}')
+
+# Plot the properties as a function of T
+fig, ax = plt.subplots(nrows=1, ncols=4)
+ax[0].plot(Ts, E_T, 'o', c='C0')
+ax[0].set_title('Energy')
+ax[0].set_xlabel(r'$T$')
+
+ax[1].plot(Ts, np.absolute(M_T), 'o', c='C1')
+ax[1].set_title('Magnetization')
+ax[1].set_xlabel(r'$T$')
+
+ax[2].plot(Ts, C_T, 'ro', c='C2')
+ax[2].set_title('Heat capacity')
+ax[2].set_xlabel(r'$T$')
+
+ax[3].plot(Ts, X_T, 'go', c='C3')
+ax[3].set_title('Susceptibility')
+ax[3].set_xlabel(r'$T$')
+plt.show()
+```
+
+
+### ML_Ising_model
+
+
+
+
 ## Thermodynamics
 
 ### Regular_solution_plot
@@ -32,7 +171,6 @@ ax.set_ylabel(r'$\Delta G$')
 plt.show()
 ```
 
-
 ### Thermo_solution_models
 ```python
 # Creating the phase diagram
@@ -50,6 +188,7 @@ for T in T_misc:
     solvus.append((x[idmin], T)) 
     solvus.append((x[idmax], T)) 
 ```
+
 
 
 ## Characterization
