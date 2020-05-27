@@ -30,8 +30,7 @@ def plot_spins(spins, T):
 ```python
 # Compute the total energy and magnetization
 def compute_energy(spins):
-    a = spins.shape[0]
-    b = spins.shape[1]
+    a, b = spins.shape
     energy = 0
     for i in range(a):
         for j in range(b):
@@ -138,7 +137,7 @@ plt.show()
 ```
 
 
-### ML_Ising_model
+### Machine_learning_Ising_model
 
 
 
