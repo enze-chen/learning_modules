@@ -16,7 +16,8 @@ k_B = 1
 # Create the spins
 def create_spins(L):
     return np.random.choice([-1, 1], size=(L, L))
-
+```
+```python
 # Plotting utility
 def plot_spins(spins, T):
     n = len(spins)
@@ -110,7 +111,8 @@ L = 4
 Ts = np.linspace(1, 5, 9)
 eqsteps = 1800
 mcsteps = 200
-
+```
+```python
 # Plotting the results
 # Estimate the critical temperature
 Tc_est = np.mean([Ts[np.argmax(C_T)], Ts[np.argmax(X_T)]])
@@ -138,8 +140,72 @@ plt.show()
 
 
 ### Machine_learning_Ising_model
+```python
+# Gathering the data
+labels = pd.read_csv(labelurl, header=None).to_numpy().ravel()
+temps = pd.read_csv(tempsurl, header=None).to_numpy().ravel()
+```
 
+```python
+# Splitting the data
+crit_ind = (temps >= 2.0) & (temps <= 2.5)
+safe_ind = (temps < 2.0) | (temps > 2.5)
 
+X_data = data[safe_ind, :]
+y_data = labels[safe_ind]
+X_test = data[crit_ind, :]
+y_test = labels[crit_ind]
+
+X_train, X_val, y_train, y_val = \
+    train_test_split(X_data, y_data, test_size=0.2, shuffle=True)
+```
+
+```python
+# Initialize and train the dummy classifier
+dummy_clf = DummyClassifier(strategy='prior', random_state=seed)
+dummy_clf.fit(X_train, y_train)
+
+# Print accuracy of dummy predictions 
+print(f'The accuracy on the training set is {dummy_clf.score(X_train, y_train):.4f}')
+print(f'The accuracy on the validation set is {dummy_clf.score(X_val, y_val):.4f}')
+print(f'The accuracy on the test set is {dummy_clf.score(X_test, y_test):.4f}')
+```
+
+```python
+# Initialize and train the logistic regression classifier
+lr_clf = LogisticRegression(solver='liblinear', max_iter=1e3, random_state=seed)
+lr_clf.fit(X_train, y_train)
+
+# Print accuracy of logistic regression predictions
+print(f'The accuracy on the training set is {lr_clf.score(X_train, y_train):.4f}')
+print(f'The accuracy on the validation set is {lr_clf.score(X_val, y_val):.4f}')
+print(f'The accuracy on the test set is {lr_clf.score(X_test, y_test):.4f}')
+```
+
+```python
+# Calculating the probabilities and uncertainties
+Ts = np.unique(temps)
+for T in Ts:
+    ind = (temps == T)
+    probs = lr_clf.predict_proba(data[ind, :])
+    means = np.mean(probs, axis=0)
+    stds = np.std(probs, axis=0)
+    mean_dis_lr.append(means[0])
+    mean_ord_lr.append(means[1])
+    err_dis_lr.append(stds[0])
+    err_ord_lr.append(stds[1])
+```
+
+```python
+# Initialize and train the perceptron
+mlp_clf = MLPClassifier(hidden_layer_sizes=(20,), random_state=seed)
+mlp_clf.fit(X_train, y_train)
+
+# Print accuracy of perceptron predictions
+print(f'The accuracy on the training set is {mlp_clf.score(X_train, y_train):.4f}')
+print(f'The accuracy on the validation set is {mlp_clf.score(X_val, y_val):.4f}')
+print(f'The accuracy on the test set is {mlp_clf.score(X_test, y_test):.4f}')
+```
 
 
 ## Thermodynamics
@@ -179,7 +245,8 @@ for T in Ts:
     line, idmin, idmax = common_tangent(x, ys, yl, T)
     liquidus.append(x[idmax])
     solidus.append(x[idmin])
-
+```
+```python
 # Creating the miscibility gap
 for T in T_misc: 
     y = curve_s(x, T, beta_s)
@@ -195,16 +262,24 @@ for T in T_misc:
 ### XRD_indexing
 
 ```python
+# Experimental data
 wavelength = 0.154
 angles = [43.2531, 50.3844, 74.0626, 89.8768]
 
+# Creating the DataFrame
 df = pd.DataFrame({'Wavelength':wavelength, '2Theta':angles})
-
+```
+```python
+# Obtaining the angles
 df['Theta'] = df['2Theta'] / 2
 
+# Computing sin(theta)
 df['Sine'] = np.sin(np.radians(df['Theta']))
-
+```
+```python
+# Computing the interplanar distance
 df['Distance'] = df['Wavelength'] / (2 * df['Sine'])
 
+# Computing the ratios between the planes
 df['Ratio'] = df['Distance^2'][0] / df['Distance^2']
 ```
