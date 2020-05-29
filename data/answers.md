@@ -148,8 +148,9 @@ temps = pd.read_csv(tempsurl, header=None).to_numpy().ravel()
 
 ```python
 # Splitting the data
-crit_ind = (temps >= 2.0) & (temps <= 2.5)
-safe_ind = (temps < 2.0) | (temps > 2.5)
+T_low, T_high = (2.00, 2.50)
+crit_ind = (temps >= T_low) & (temps <= T_high)
+safe_ind = (temps < T_low) | (temps > T_high)
 
 X_data = data[safe_ind, :]
 y_data = labels[safe_ind]
@@ -157,7 +158,7 @@ X_test = data[crit_ind, :]
 y_test = labels[crit_ind]
 
 X_train, X_val, y_train, y_val = \
-    train_test_split(X_data, y_data, test_size=0.2, shuffle=True)
+    train_test_split(X_data, y_data, test_size=0.3, shuffle=True)
 ```
 
 ```python
@@ -173,7 +174,7 @@ print(f'The accuracy on the test set is {dummy_clf.score(X_test, y_test):.4f}')
 
 ```python
 # Initialize and train the logistic regression classifier
-lr_clf = LogisticRegression(solver='liblinear', max_iter=1e3, random_state=seed)
+lr_clf = LogisticRegression(max_iter=1e4, random_state=seed)
 lr_clf.fit(X_train, y_train)
 
 # Print accuracy of logistic regression predictions
@@ -181,7 +182,6 @@ print(f'The accuracy on the training set is {lr_clf.score(X_train, y_train):.4f}
 print(f'The accuracy on the validation set is {lr_clf.score(X_val, y_val):.4f}')
 print(f'The accuracy on the test set is {lr_clf.score(X_test, y_test):.4f}')
 ```
-
 ```python
 # Calculating the probabilities and uncertainties
 Ts = np.unique(temps)
@@ -205,6 +205,19 @@ mlp_clf.fit(X_train, y_train)
 print(f'The accuracy on the training set is {mlp_clf.score(X_train, y_train):.4f}')
 print(f'The accuracy on the validation set is {mlp_clf.score(X_val, y_val):.4f}')
 print(f'The accuracy on the test set is {mlp_clf.score(X_test, y_test):.4f}')
+```
+```python
+# Calculating the probabilities and uncertainties
+Ts = np.unique(temps)
+for T in Ts:
+    ind = (temps == T)
+    probs = mlp_clf.predict_proba(data[ind, :])
+    means = np.mean(probs, axis=0)
+    stds = np.std(probs, axis=0)
+    mean_dis_mlp.append(means[0])
+    mean_ord_mlp.append(means[1])
+    err_dis_mlp.append(stds[0])
+    err_ord_mlp.append(stds[1])
 ```
 
 
