@@ -27,6 +27,10 @@ If you're familiar with Git and have **Python 3.6+** installed on your computer,
 1. Load Jupyter (`jupyter notebook`) and run the notebooks.   
 
 
+## Python background
+Since these Jupyter notebooks require some degree of Python proficiency, you might want to brush up on your Python fundamentals before jumping in. There are existing resources from the [Materials Project](https://github.com/materialsproject/workshop/tree/master/lessons/python_primer) and [UC Berkeley Physics department](https://github.com/berkeley-physics/intro_python), as well as several good tutorials online.
+
+
 ## Acknowledgements
 By sharing these files publicly on GitHub under a [MIT license](LICENSE), I'm pretty much giving you free rein to do whatever you wish with the code. If you found the modules helpful, do spread the word to your friends/classmates. A shout-out would be appreciated, but your learning is my top priority. If you need a more formal citation, something like the following could work:   
 
