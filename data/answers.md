@@ -18,11 +18,11 @@ idn = n
 # Initialization function
 def initialize(L, n):
     cells = np.zeros(shape=(L, L))
-    np.put(a=cells, ind=np.random.choice(L**2, n, replace=False), \
+    np.put(a=cells, \
+           ind=np.random.default_rng().choice(a=L**2, size=n, replace=False), \
            v=range(1, idn+1))
     return cells
 ```
-
 ```python
 # Get neighboring states
 def neighbors(arr, i, j):
@@ -37,22 +37,20 @@ def neighbors(arr, i, j):
 ```python
 # Evolve the CA
 def evolve(arr, n):
-    global idn
-    
     # Grow existing grains
     temp = arr.copy()
     for i in range(temp.shape[0]):
         for j in range(temp.shape[1]):
             if temp[i, j] == 0:
-                neighbor_list = neighbors(temp, i, j)
+                neighbor_list = neighbors(arr=temp, i=i, j=j)
                 if np.sum(neighbor_list):
                     mode = scipy.stats.mode(neighbor_list[neighbor_list != 0])
                     arr[i, j] = mode[0]
                     
     # Nucleate new embryos
     L = len(arr)
-    k = np.random.choice(L, n)
-    l = np.random.choice(L, n)
+    k = np.random.default_rng().choice(L, n)
+    l = np.random.default_rng().choice(L, n)
     for i in range(n):
         if arr[k[i], l[i]] == 0:
             idn += 1
@@ -78,9 +76,7 @@ def avg_neighbors(arr, i, j):
 ```
 ```python
 # Update function for spinodal decomposition animation
-def update(dummy):
-    global cells, A, D
-    
+def update(dummy):    
     temp_cells = np.zeros(cells.shape)
     for i in range(temp_cells.shape[0]):
         for j in range(temp_cells.shape[1]):
