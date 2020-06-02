@@ -7,6 +7,96 @@ Here I provide some sample code that can be used to complete the learning module
 
 ## Computational
 
+### Cellular_automaton_models
+```python
+# Initialize parameters for recrystallization
+L = 50
+n = 5
+idn = n
+```
+```python
+# Initialization function
+def initialize(L, n):
+    cells = np.zeros(shape=(L, L))
+    np.put(a=cells, ind=np.random.choice(L**2, n, replace=False), \
+           v=range(1, idn+1))
+    return cells
+```
+
+```python
+# Get neighboring states
+def neighbors(arr, i, j):
+    L = len(arr)
+    neighbor_list = []
+    for k in range(i - 1, i + 2):
+        for l in range(j - 1, j + 2):
+            neighbor_list.append(arr[k % L, l % L])
+    neighbor_list.pop(4)
+    return np.array(neighbor_list)
+```
+```python
+# Evolve the CA
+def evolve(arr, n):
+    global idn
+    
+    # Grow existing grains
+    temp = arr.copy()
+    for i in range(temp.shape[0]):
+        for j in range(temp.shape[1]):
+            if temp[i, j] == 0:
+                neighbor_list = neighbors(temp, i, j)
+                if np.sum(neighbor_list):
+                    mode = scipy.stats.mode(neighbor_list[neighbor_list != 0])
+                    arr[i, j] = mode[0]
+                    
+    # Nucleate new embryos
+    L = len(arr)
+    k = np.random.choice(L, n)
+    l = np.random.choice(L, n)
+    for i in range(n):
+        if arr[k[i], l[i]] == 0:
+            idn += 1
+            arr[k[i], l[i]] = idn
+    
+    return arr
+```
+```python
+# Initialize paramters for spinodal decomposition
+A = 1.5
+D = 0.7
+N = 100
+```
+```python
+# Compute average of neighbors
+def avg_neighbors(arr, i, j):
+    m, n = arr.shape
+    fnn = (arr[(i - 1) % m, j] + arr[(i + 1) % m, j] + arr[i, (j - 1) % n] + \
+           arr[i, (j+1)%n]) / 6
+    snn = (arr[(i - 1) % m, (j - 1) % n] + arr[(i - 1) % m, (j + 1) % n] + \
+           arr[(i + 1) % m, (j - 1) % n] + arr[(i + 1) % m, (j + 1) % n]) / 12
+    return fnn + snn
+```
+```python
+# Update function for spinodal decomposition animation
+def update(dummy):
+    global cells, A, D
+    
+    temp_cells = np.zeros(cells.shape)
+    for i in range(temp_cells.shape[0]):
+        for j in range(temp_cells.shape[1]):
+            temp_cells[i, j] = A * np.tanh(cells[i, j]) + \
+                               D * (avg_neighbors(cells, i, j) - cells[i, j])
+
+    for i in range(temp_cells.shape[0]):
+        for j in range(temp_cells.shape[1]):
+            cells[i, j] = temp_cells[i, j] - avg_neighbors(temp_cells - cells, i, j) 
+    
+    img = ax.imshow(cells)
+    return (img,)
+```
+
+
+
 ### Monte_Carlo_Ising_model
 ```python
 # Set constants

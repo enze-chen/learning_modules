@@ -3,7 +3,9 @@ This folder contains a collection of computational MSE learning modules that I h
 
 ### Computational
 
-* [Monte Carlo simulations of the Ising model](Monte_Carlo_Ising_model.ipynb): This module teaches you how to use Monte Carlo to simulate the 2D ferromagnetic Ising model on a square lattice. There is a lot of scaffolding, but you must fill in all of the code. An excellent introduction for someone who is interested in computational materials science.
+* [Cellular automata for metallurgy](Cellular_automaton_models.ipynb): This modules teaches you how to use cellular automata to model two important processes in metallurgy: recrystallization and spinodal decomposition. It is highly interactive, and at the end you will create an animation using Matplotlib! I also provide several links to external resources.
+
+* [Monte Carlo simulations of the Ising model](Monte_Carlo_Ising_model.ipynb): This module teaches you how to use Monte Carlo to simulate the 2D ferromagnetic Ising model on a square lattice. There is a lot of scaffolding, but you must fill in all of the code. A great introduction to [NumPy](https://numpy.org/) and [Matplotlib](https://matplotlib.org/) for someone who is interested in computational materials science in Python.
 
 * [Machine learning for the Ising model](Machine_learning_Ising_model.ipynb): This module teaches you how to use machine learning algorithms to predict the phase transition in the 2D Ising model on a square lattice. It is recommended that you understand the MC simulation notebook and basic Python before jumping into this one.
 
