@@ -22,8 +22,10 @@ This folder contains a collection of computational MSE learning modules that I h
 ### Characterization
 
 * [Indexing powder XRD spectra](XRD_indexing.ipynb): This module teaches you how to index powder XRD spectra using scientific computing tools in Python, specifically [pandas](https://pandas.pydata.org/) and [NumPy](https://numpy.org/). It is targeted towards *complete beginners* and a good notebook to start with if you're new to Python.
-    
-* [Trends in powder XRD spectra](XRD_trends.ipynb): This module teaches you about how changing the experimental parameters will affect the powder XRD spectra. The widgets at the end correspond to different parameters that will change the peak profile.
+
+* [Plotting powder XRD spectra](XRD_plotting.ipynb): This module teaches you how to represent the physical phenomena in XRD in code using [NumPy](https://numpy.org/) and [Matplotlib](https://matplotlib.org/). It is targeted towards students with some Python programming experience and hopefully reinforces the connection between the concepts we learn and the spectra we see.
+
+* [Trends in powder XRD spectra](XRD_trends.ipynb): This module teaches you about how changing the experimental parameters will affect the powder XRD spectra. The widgets at the end correspond to different parameters that will change the peak profile. *No programming experience necessary*.
 
 
 
