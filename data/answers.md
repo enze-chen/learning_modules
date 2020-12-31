@@ -382,3 +382,34 @@ df['Distance'] = df['Wavelength'] / (2 * df['Sine'])
 # Computing the ratios between the planes
 df['Ratio'] = df['Distance^2'][0] / df['Distance^2']
 ```
+
+### XRD_plotting
+
+```python
+def compute_thetas(planes, a, wavelength):
+    thetas = np.arcsin(wavelength / (2 * a / np.linalg.norm(planes, axis=1)))
+    return thetas
+```
+```python
+def compute_F(planes, basis, f):
+    F = f * np.sum(np.exp(2j * np.pi * (planes @ basis.T)), axis=1)
+    return F
+```
+```python
+def compute_m(planes):
+    m = np.array([2 ** np.count_nonzero(p) * \
+                  len(set(itertools.permutations(p))) for p in planes])
+    return m
+```
+```python
+def compute_Lp(thetas):
+    Lp = np.divide(1 + np.cos(2 * thetas) ** 2,
+                   np.multiply(np.sin(thetas) ** 2, np.cos(thetas)))
+    return Lp
+```
+```python
+# Putting it all together
+angles = 2 * np.degrees(thetas)
+intensities = np.multiply(np.abs(compute_F(planes, basis, f)) ** 2, 
+                          np.multiply(compute_m(planes), compute_Lp(thetas)))
+```
