@@ -1,16 +1,21 @@
 # Learning modules
 This GitHub repository contains a collection of computational learning modules that I have created, largely with [Jupyter notebooks](https://jupyter.org). The modules are grouped into files by domain, where   
 
-- `mse` = materials science and engineering
+- `mse` = materials science and engineering   
 
-The `data` folder contains all the data files referenced across the modules. The `fig` folder contains all the figures referenced across the modules.
+- `python` = Python programming language
+
+The `data` folder contains all the data files referenced across the modules. 
+The `fig` folder contains all the figures referenced across the modules.
 
 
 ## Usage
-Most of the Jupyter notebooks have an interactive component that requires dynamic rendering. There are several ways to do this, and I give two below:
+Most of the Jupyter notebooks have an interactive component that requires dynamic rendering. 
+There are several ways to do this, and I give two below:
 
 ### 1: Google Colaboratory
-This method is nice because it doesn't require you to have Git or Python on your computer, and you can save a copy of each notebook on your Google account. I recommend this option.
+This method is nice because it doesn't require you to have Git or Python on your computer, and you can save a copy of each notebook on your Google account. 
+I recommend this option.
 
 1. Click through the folders until you've opened the specific notebook you want to render.   
 1. In a different tab, go to https://colab.research.google.com and click `File > Open notebook > GitHub`.   
@@ -28,11 +33,15 @@ If you're familiar with Git and have **Python 3.6+** installed on your computer,
 
 
 ## Python background
-Since these Jupyter notebooks require some degree of Python proficiency, you might want to brush up on your Python fundamentals before jumping in. There are existing resources from the [Materials Project](https://github.com/materialsproject/workshop/tree/master/lessons/python_primer) and [UC Berkeley Physics department](https://github.com/berkeley-physics/intro_python), as well as several good tutorials online.
+Since these Jupyter notebooks require some degree of Python proficiency, you might want to brush up on your Python fundamentals before jumping in. 
+There are existing resources from the [Materials Project](https://github.com/materialsproject/workshop/tree/master/lessons/python_primer) and [UC Berkeley Physics department](https://github.com/berkeley-physics/intro_python), as well as several good tutorials online.
 
 
 ## Acknowledgements
-By sharing these files publicly on GitHub under a [MIT license](LICENSE), I'm pretty much giving you free rein to do whatever you wish with the code. If you found the modules helpful, do spread the word to your friends/classmates. A shout-out would be appreciated, but your learning is my top priority. If you need a more formal citation, something like the following could work:   
+By sharing these files publicly on GitHub under a [MIT license](LICENSE), I'm pretty much giving you free rein to do whatever you wish with the code. 
+If you found the modules helpful, do spread the word to your friends/classmates. 
+A shout-out would be appreciated, but your learning is my top priority. 
+If you need a more formal citation, something like the following could work:   
 
 ```
 Enze Chen, Learning modules, (2020), GitHub, https://github.com/enze-chen/learning_modules.
@@ -51,4 +60,5 @@ or in BibTeX:
 ```
 
 ## Contributing
-If you have any questions about any of these modules or have an idea for a new module, please let me know! Email, GitHub issue/pull request, anything works.
+If you have any questions about any of these modules or have an idea for a new module, please let me know! 
+Email, GitHub issue/pull request, anything works.
