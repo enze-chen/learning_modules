@@ -1,8 +1,8 @@
 # Python learning modules
-This folder contains a collection of [Jupyter notebooks](https://jupyter.org) that introduce *complete beginners* to the Python programming language.
-Each notebook is quite long and has many interactive exercises for students to fill in their own code.
-I understand that there are many such tutorials online, many of which are probably better than these, so the main reason I created this repo was just to consolidate the resources I used for mentoring other students.
-Moreover, the focus is on modules, functions, and algorithms most commonly encountered in computational materials science, so you'll find the exercises most helpful in this regard.
+This folder contains a collection of [Jupyter notebooks](https://jupyter.org) that introduce **complete beginners** to the Python programming language.
+Each notebook is **quite long** and has **many interactive exercises** for students to fill in their own code.
+I understand that there are many such tutorials online, several of which are probably better than these, so the main reason I created this repo was just to consolidate the resources I used for mentoring other students.
+Moreover, the focus is on modules, functions, and algorithms most commonly encountered in computational materials science, so you'll find the exercises most helpful if this is the domain you're planning to work in.
 The notebooks are numbered in what I hope is a logical sequence:
 
 00. [Installing Python](00_Installing_Python.md): This is 
