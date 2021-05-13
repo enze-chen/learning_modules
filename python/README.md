@@ -1,12 +1,14 @@
 # Python learning modules
 This folder contains a collection of [Jupyter notebooks](https://jupyter.org) that introduce **complete beginners** to the Python programming language.
-Each notebook is **quite long** and has **many interactive exercises** for students to fill in their own code.
+Each notebook is **quite long** and has **many interactive exercises** for students to fill in or run their own code.
 I understand that there are many such tutorials online, several of which are probably better than these, so the main reason I created this repo was just to consolidate the resources I used for mentoring other students.
 Moreover, the focus is on modules, functions, and algorithms most commonly encountered in computational materials science, so you'll find the exercises most helpful if this is the domain you're planning to work in.
 The notebooks are numbered in what I hope is a logical sequence:
 
-00. [Installing Python](00_Installing_Python.md): This is 
-01. [Introduction to Python](01_Introduction_to_Python.ipynb):
+00. [Installing Python](00_Installing_Python.md): This is just a markdown file to explain how to install Python (Anaconda).
+01. [Introduction to Python](01_Introduction_to_Python.ipynb): This notebook introduces beginners to the Python programming language, its syntax, data types, data structures, etc.
+02. [Introduction to NumPy and Matplotlib](02_Introduction_to_NumPy_Matplotlib.ipynb): This notebook introduces beginners to scientific computing in NumPy and data visualization using Matplotlib.
+03. [Introduction to pandas and file I/O](03_Introduction_to_pandas_files.ipynb): This notebook introduces beginners to pandas to work with tabular data and other common file input/output (I/O) paradigms in Pythoon.
 
 
 ## Usage
